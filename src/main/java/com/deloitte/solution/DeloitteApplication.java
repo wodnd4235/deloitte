@@ -12,6 +12,7 @@ public class DeloitteApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DeloitteApplication.class, args);
+		
 	}
 
 }

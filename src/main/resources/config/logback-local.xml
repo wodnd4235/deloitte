@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="30">
+
+	
+ 	<include resource="log4j2.xml"/> <!-- 로그 메시지 형식 -->
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            
+        </Root>
+    </Loggers>
+</Configuration>
