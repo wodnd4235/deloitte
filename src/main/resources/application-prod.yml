@@ -30,4 +30,5 @@ spring:
     job:
       enabled: false
       
-
+logging:
+    config: classpath:logback-prod.xml   
