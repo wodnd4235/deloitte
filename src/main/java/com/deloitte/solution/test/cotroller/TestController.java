@@ -1,4 +1,4 @@
-package com.deloitte.solution.cotroller;
+package com.deloitte.solution.test.cotroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
