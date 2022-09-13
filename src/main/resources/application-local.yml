@@ -30,4 +30,6 @@ spring:
     job:
       enabled: false
 
+logging:
+    config: classpath:config/logback-local.xml   
       

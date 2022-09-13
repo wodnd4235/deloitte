@@ -11,12 +11,9 @@
         </Console>
     </Appenders>
 
-   <!-- Spring boot 의 logback/defaults.xml 참고 -->
-      <Loggers>
+    <Loggers>
         <Root level="info">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File" />
         </Root>
     </Loggers>
-    
 </Configuration>
