@@ -31,5 +31,5 @@ spring:
       enabled: false
 
 logging:
-    config: classpath:logback-local.xml   
+    config: classpath:config/logback-local.xml   
       

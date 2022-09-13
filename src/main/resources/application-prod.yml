@@ -31,4 +31,4 @@ spring:
       enabled: false
       
 logging:
-    config: classpath:logback-prod.xml   
+    config: classpath:config/logback-prod.xml   
