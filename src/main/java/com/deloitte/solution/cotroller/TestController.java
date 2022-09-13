@@ -25,4 +25,8 @@ public class TestController {
 //		return mv;
 	}
 		
+	@GetMapping("/test2")
+	public String getApiTest() {
+		return "test";
+	}
 }
