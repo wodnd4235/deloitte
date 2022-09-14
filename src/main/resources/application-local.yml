@@ -14,7 +14,7 @@ spring:
       path: /h2-console  
   datasource:
     driver-class-name: org.h2.Driver  
-    url: jdbc:h2:~/test 
+    url: jdbc:h2:/~test 
     username: choi 
     password: 1234
   jpa:
@@ -30,4 +30,6 @@ spring:
     job:
       enabled: false
 
+logging:
+    config: classpath:config/logback-local.xml   
       

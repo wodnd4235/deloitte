@@ -11,18 +11,22 @@ import lombok.extern.slf4j.Slf4j;
 public class TestController {
 	
 	@GetMapping("/test")
-	public ModelAndView testController() {
-		ModelAndView mv = new ModelAndView();
+	public void testController() {
+//		ModelAndView mv = new ModelAndView();
 	
 		log.info("하이?ㄴㅁ이ㅓ모나ㅓ온모라ㅓ모라ㅓㅁ라ㅓ몬라ㅓㅗㅁㄴ로");
-//	
+//		log.warn("sadjsadlkasjdalksjdjsad");
 //		try {
 //			
 //		}catch(Exception e) {
 //			
 //		}
 		
-		return mv;
+//		return mv;
 	}
 		
+	@GetMapping("/test2")
+	public String getApiTest() {
+		return "test";
+	}
 }
