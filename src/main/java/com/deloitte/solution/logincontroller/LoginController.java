@@ -23,42 +23,42 @@ public class LoginController {
 	public ModelAndView loginController(@RequestParam(value="username", required=false)String userID, @RequestParam(value="password", required=false)String passWord) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("login/login");
-		
-		try { 
-			URL url = new URL("https://10ax.online.tableau.com/api/3.4/auth/signin");
-			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-			
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			
-			JSONObject obj = new JSONObject();
-			
-			obj.put("user-name", userID);
-			obj.put("password", passWord);
-			obj.put("site-name", "test");
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			
-			while((line = br.readLine()) != null) { 
-				sb.append(line);
+		try {
+			if(userID != null && passWord != null) {
+				URL url = new URL("https://10ax.online.tableau.com/api/3.4/auth/signin");
+				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+				
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Content-Type", "application/json");
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				
+				JSONObject obj = new JSONObject();
+				
+				obj.put("user-name", userID);
+				obj.put("password", passWord);
+				obj.put("site-name", "MarketingTeam");
+				
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				StringBuilder sb = new StringBuilder();
+				String line = null;
+				
+				while((line = br.readLine()) != null) { 
+					sb.append(line);
+				}
+				
+				JSONObject obj2 = new JSONObject(sb.toString());
+				
+				
+				log.info("asdsadasdasdas >>>>{}",obj);
 			}
 			
-			JSONObject obj2 = new JSONObject(sb.toString());
-			
-			
-			
-			
-			log.info("asdsadasdasdas >>>>{}",obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		log.info("UserID = " +userID);
-//		log.info("passWord = " + passWord);
-//		
+		log.info("UserID = " +userID);
+		log.info("passWord = " + passWord);
+		
 		
 		
 		return mv;
