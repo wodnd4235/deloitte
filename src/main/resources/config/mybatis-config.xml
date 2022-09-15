@@ -4,6 +4,6 @@
 
 <configuration>
 	<mappers>
-		<mapper resource="TestMapper.xml"/>
+		<mapper resource="mapper/DataBaseMapper.xml"/>
 	</mappers>
 </configuration>

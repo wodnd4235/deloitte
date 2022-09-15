@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.deloitte.solution.databasevo.DataBaseVO;
 
+
 public interface DatabaseService {
-	List<DataBaseVO> getDatabaseList();
+	List<DataBaseVO> getDatabaseList() throws Exception;
 }
