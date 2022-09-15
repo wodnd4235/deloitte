@@ -11,8 +11,7 @@
         </Console>
     </Appenders>
 
-	
-	<include resource="config/log4j2.xml"/>
+	<include resource="/config/logback.xml"/>  
 	
     <Loggers>
         <Root level="ERROR">

@@ -8,6 +8,8 @@ server:
       force: true
       
 spring:
+  config:
+    profile: prod
   h2:
     console:
       enabled: true 
@@ -31,4 +33,4 @@ spring:
       enabled: false
       
 logging:
-    config: classpath:config/logback-prod.xml   
+    config: classpath:config/logback.xml 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<included>
-
+<Properties>
   <!--   <property name="DEFAULT_LOG_HOME" value="${user.home}/.temp/logs"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -54,4 +53,4 @@
 	
 	</Loggers>
 
-</included>
+</Properties>
