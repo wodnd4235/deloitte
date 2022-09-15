@@ -11,7 +11,7 @@
             <PatternLayout pattern="${LOG_FORMAT}"/>
         </Console>
  		 <!-- log 파일을 저장하는 위치와 정책 -->
-		<RollingFile name="SaveFile" filePattern="%d{yyyy-MM-dd-hh-mm}">
+		<RollingFile name="SaveFile" filePattern="%d{yyyy-MM-dd hh:mm}">
 		  <FileName>${BASE_DIR}/%d{yyyy-MM-dd-HH}.log</FileName>
 		  <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>	
 		  <Policies>
@@ -19,7 +19,7 @@
 		  </Policies>
 		  <DefaultRolloverStrategy max="7" fileIndex="max" >
 		  	<Delete basePath = "${BASE_DIR}" maxDepth = "1">
-		  		<!-- 3일이 경과한 로그파일은 자동 삭제 -->
+		  		<!-- 30일이 경과한 로그파일은 자동 삭제 -->
 		  		<IfLastModified age = "30d"/>
 		  	</Delete>
 		  </DefaultRolloverStrategy>
@@ -32,28 +32,6 @@
      <Loggers>
 		<!--  APP  -->
 		<logger name="com.deloitte.solution" level="DEBUG"/>
-		
-	
-		<logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR" additivity="false"/>
-	    <logger name="org.apache.catalina.util.LifecycleBase" level="ERROR" additivity="false"/>
-	    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN" additivity="false"/>
-	    <logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN" additivity="false"/>
-	    <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN" additivity="false"/>
-	    <logger name="org.crsh.plugin" level="WARN" additivity="false"/>
-	    <logger name="org.crsh.ssh" level="WARN" additivity="false"/>
-	    <logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR" additivity="false"/>
-	    <logger name="org.hibernate.validator.internal.util.Version" level="WARN" additivity="false"/>
-	
-	    <!-- 추가 3rd party -->
-	    <logger name="net.sf.jxls" level="OFF" additivity="false"/>
-	    <logger name="org.apache.commons.jexl2" level="OFF" additivity="false"/>
-	    <logger name="org.apache.http.wire" level="WARN" additivity="false"/>
-	    <logger name="org.apache.commons.beanutils" level="WARN" additivity="false"/>
-	    <logger name="org.apache.commons.digester.Digester" level="WARN" additivity="false"/>
-	
-	    <logger name="com.zaxxer.hikari" level="WARN" additivity="false"/>
-	
-	    <logger name="org.springframework.web.servlet.PageNotFound" level="OFF" additivity="false"/>
 		
 		<logger name="org.hibernate" level="WARN" additivity="false"/>
 		<logger name="org.quartz" level="WARN" additivity="false"/>
