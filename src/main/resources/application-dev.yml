@@ -8,6 +8,9 @@ server:
       force: true
       
 spring:
+  config:
+    activate:
+      on-profile: dev
   h2:
     console:
       enabled: true 
@@ -38,5 +41,5 @@ spring:
     config-location: classpath:config/mybatis-config.xml
 
 logging:
-   config: classpath:config/logback-dev.xml        
+    config: classpath:config/logback.xml  
 

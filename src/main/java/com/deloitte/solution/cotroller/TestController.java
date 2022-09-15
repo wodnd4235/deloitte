@@ -13,8 +13,11 @@ public class TestController {
 	@GetMapping("/test")
 	public void testController() {
 //		ModelAndView mv = new ModelAndView();
-	
-		log.info("하이?ㄴㅁ이ㅓ모나ㅓ온모라ㅓ모라ㅓㅁ라ㅓ몬라ㅓㅗㅁㄴ로");
+		Object a = new Object();
+		a = "asdasdasd";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dddd",a);
+		log.error("하이?ㄴㅁ이ㅓ모나ㅓ온모라ㅓ모라ㅓㅁ라ㅓ몬라ㅓㅗㅁㄴ로 {}", mv);
 //		log.warn("sadjsadlkasjdalksjdjsad");
 //		try {
 //			

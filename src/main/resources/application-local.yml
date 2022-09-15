@@ -8,6 +8,8 @@ server:
       force: true
       
 spring:
+  config:
+    profile: local
   h2:
     console:
       enabled: true 
