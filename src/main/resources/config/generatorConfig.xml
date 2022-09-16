@@ -6,7 +6,10 @@
 	<context id="simple" targetRuntime="MyBatis3simple">
 		
 		<!-- property 파일 사용하여 개발 환경 분리 가능함. TODO 강준구 대리 잡  -->
-		 <!-- <properties resource="application.properties"/> -->
+		 <!-- <properties resource="application.properties"/> 
+		 	  또는
+		 	   <properties resource="application-${spring.profiles.active}.properties"/>
+		 -->
 		 
 		 <!--  개발환경 분리 필요 TODO -->
 		<!-- <jdbcConnection
