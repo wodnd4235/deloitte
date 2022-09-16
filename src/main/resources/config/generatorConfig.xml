@@ -24,7 +24,8 @@
 			targetPackage="com.deloitte.solution.base.mapper" 
 			targetProject="Deloitte/src/main/java"
 			type="XMLMAPPER" />
-
+		
+		<!--  자동생성할 table 기재 -->
 		<table tableName="test" />
 	
 	</context>
