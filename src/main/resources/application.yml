@@ -14,3 +14,16 @@ spring:
   profiles:
     active: local
     
+popbill:
+  #링크아이디
+  linkId: DELOITTE11
+  #비밀키
+  secretKey: RPs7ozdlyztyJ2sIrxaEQlQug1TAJ1wRmebQdWoXImw=
+  #연동환경 설정값 true(개발용), false(상업용)
+  isTest: true
+  #인증토큰 아이피 제한 기능 사용여부 true(사용-권장), false(미사용)
+  isIpRestrictOnOff: true
+  #팝빌 API 서비스 고정 IP 사용여부 true(사용), false(미사용)
+  useStaticIp: false
+  #로컬시스템 시간 사용여부 true(사용-권장), false(미사용)
+  useLocalTimeYn: true
