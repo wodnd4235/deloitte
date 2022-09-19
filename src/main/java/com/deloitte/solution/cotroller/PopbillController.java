@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.deloitte.solution.dto.PopbillDto;
+import com.deloitte.solution.service.CustomEasyFinBankService;
 import com.popbill.api.AccountCheckInfo;
 import com.popbill.api.AccountCheckService;
 import com.popbill.api.EasyFinBankService;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class PopbillController {
 	
 	@Autowired
-    private EasyFinBankService easyFinBankService;
+	CustomEasyFinBankService easyFinBankService;
 	@Autowired
 	AccountCheckService accountCheckService;
 
@@ -68,7 +69,7 @@ public class PopbillController {
     }
     
     @RequestMapping(value = "/checkAccountInfo", method = RequestMethod.GET)
-    public String checkAccountInfo(HttpSession session, Model m) throws Exception {
+    public String checkAccountInfo(HttpSession session, Model m) {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	/*
@@ -77,7 +78,7 @@ public class PopbillController {
         */
 
         // [필수] 팝빌회원 사업자번호 (하이픈 '-' 제외 10 자리)
-        String testCorpNum = "1168122521";
+        String MemberCorpNum = "1168122521";
 
         /*
         * [필수] 기관코드
@@ -86,10 +87,10 @@ public class PopbillController {
         String BankCode = "0003";
 
         // [필수] 계좌번호 (하이픈 '-' 제외 8자리 이상 14자리 이하)
-        String AccountNumber = "50502532704011";
+        String AccountNumber = "50502532704011"; 
 
         try {
-            AccountCheckInfo accountInfo = accountCheckService.CheckAccountInfo(testCorpNum, BankCode, AccountNumber);
+            AccountCheckInfo accountInfo = accountCheckService.CheckAccountInfo(MemberCorpNum, BankCode, AccountNumber);
             m.addAttribute("AccountInfo", accountInfo);
         } catch (PopbillException e) {
             System.out.println("오류 코드" + e.getCode());
