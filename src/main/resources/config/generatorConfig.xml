@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="simple" targetRuntime="MyBatis3simple">
+		
+		<!-- property 파일 사용하여 개발 환경 분리 가능함. TODO 강준구 대리 잡  -->
+		 <!-- <properties resource="application.properties"/> 
+		 	  또는
+		 	   <properties resource="application-${spring.profiles.active}.properties"/>
+		 -->
+		 
+		 <!--  개발환경 분리 필요 TODO -->
+		<!-- <jdbcConnection
+			connectionURL="${spring.datasource.url}"
+			driverClass="${spring.datasource.driver-class-name}" password="${spring.datasource.password}"
+			userId="${spring.datasource.username}" />
+		 -->
+		 
+		  
+		<jdbcConnection
+			connectionURL="jdbc:h2:tcp://localhost/~/test"
+			driverClass="org.h2.Driver" password="1234"
+			userId="choi" />
+
+		<javaModelGenerator
+			targetPackage="com.deloitte.solution.entity"
+			targetProject="Deloitte/src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator 
+			targetPackage="com.deloitte.solution.base.mapper"
+			targetProject="Deloitte/src/main/java" />
+
+		<javaClientGenerator
+			targetPackage="com.deloitte.solution.base.mapper" 
+			targetProject="Deloitte/src/main/java"
+			type="XMLMAPPER" />
+		
+		<!--  자동생성할 table 기재 -->
+		<table tableName="test" />
+	
+	</context>
+</generatorConfiguration>

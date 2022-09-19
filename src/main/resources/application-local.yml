@@ -15,11 +15,16 @@ spring:
       enabled: true 
       path: /h2-console  
   datasource:
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: jdbc:sqlserver://10.204.17.52:48349;instanceName=deloitte
+#    username: ifuser
+#    password: WElcome12!@
     driver-class-name: org.h2.Driver  
-    url: jdbc:h2:~/test 
-    username: choi 
+    url: jdbc:h2:tcp://localhost/~/test
+    username: choi
     password: 1234
   jpa:
+    defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: false
     hibernate:
@@ -31,7 +36,9 @@ spring:
   batch:
     job:
       enabled: false
+  mybatis:
+    mapper-locations: classpath:mapper/DataBaseMapper.xml
+    config-location: classpath:config/mybatis-config.xml
 
 logging:
-    config: classpath:config/logback-local.xml   
-      
+    config: classpath:config/logback-local.xml         
