@@ -32,7 +32,7 @@ public class PopbillController {
 	AccountCheckService accountCheckService;
 	@Autowired
 	PopbillService baseServiceImpl;
-	@Autowired
+	@Autowired(required=false)
 	PopbillProperties popbillProperties;
 
 	@RequestMapping(value = "/requestJob", method = RequestMethod.GET)
