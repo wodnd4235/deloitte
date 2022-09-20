@@ -1,4 +1,4 @@
-package com.deloitte.solution.factory;
+package com.deloitte.solution.support;
 
 import java.io.IOException;
 import java.util.Properties;
