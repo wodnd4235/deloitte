@@ -25,7 +25,7 @@ public class LoginController {
 		mv.setViewName("login/login");
 		try {
 			if(userID != null && passWord != null) {
-				URL url = new URL("https://10ax.online.tableau.com/api/3.4/auth/signin");
+				URL url = new URL("https://10/api/3.4/auth/signin");
 				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 				
 				conn.setRequestMethod("POST");
