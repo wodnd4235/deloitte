@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info" monitorInterval="30">
-    <Properties>
+    	<Properties>
         <Property name="LOG_FORMAT">[%d{HH:mm:ss.SSS}] [%-5level] [%logger] %msg%n</Property>
-        <Property name="BASE_DIR">/Users</Property>
+        <Property name="BASE_DIR">/logs</Property>
+        
     </Properties>
 
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${LOG_FORMAT}"/>
         </Console>
-    </Appenders>
-
+ 		 <!-- log 파일을 저장하는 위치와 정책 local에서는 굳이 필요 업으므로 삭제 필요. 예시임. -->
+		<RollingFile name="SaveFile" filePattern="%d{yyyy-MM-dd hh:mm}">
+		  <FileName>${BASE_DIR}/%d{yyyy-MM-dd-HH}.log</FileName>
+		  <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>	
+		  <Policies>
+		    <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+		  </Policies>
+		  <DefaultRolloverStrategy max="7" fileIndex="max" >
+		  	<Delete basePath = "${BASE_DIR}" maxDepth = "1">
+		  		<!-- 15일이 경과한 로그파일은 자동 삭제 정책 확인 필요 -->
+		  		<IfLastModified age = "15d"/>
+		  	</Delete>
+		  </DefaultRolloverStrategy>
+		</RollingFile>
+        
+    </Appenders>   
+   	
+     <Loggers>
 	
-    <Loggers>
-        <Root level="INFO">
+		<logger name="org.hibernate" level="WARN" additivity="false"/>
+		<logger name="org.quartz" level="WARN" additivity="false"/>
+		
+        <Root level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="SaveFile"/>
         </Root>
+        
     </Loggers>
+    
 </Configuration>
