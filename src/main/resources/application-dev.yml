@@ -20,7 +20,7 @@ spring:
 #    username: ifuser
 #    password: WElcome12!@
     driver-class-name: org.h2.Driver  
-    url: jdbc:h2:~/test 
+    url: jdbc:h2:mem~/test 
     username: choi 
     password: 1234
   jpa:

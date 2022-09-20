@@ -25,7 +25,7 @@ public class LoginController {
 		mv.setViewName("login/login");
 		try {
 			if(userID != null && passWord != null) {
-				URL url = new URL("https://10/api/3.4/auth/signin");
+				URL url = new URL("https://10.204.223.96/api/3.4/auth/signin");
 				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 				
 				conn.setRequestMethod("POST");
@@ -37,7 +37,7 @@ public class LoginController {
 				
 				obj.put("user-name", userID);
 				obj.put("password", passWord);
-				obj.put("site-name", "MarketingTeam");
+				obj.put("site-name", "4");
 				
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				StringBuilder sb = new StringBuilder();
