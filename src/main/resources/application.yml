@@ -13,12 +13,19 @@ spring:
 spring:
   profiles:
     active: local
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
     
 popbill:
   #링크아이디
   linkId: DELOITTE11
   #비밀키
   secretKey: RPs7ozdlyztyJ2sIrxaEQlQug1TAJ1wRmebQdWoXImw=
+  #팝빌회원 사업자 번호
+  corpNum: 1168122521
   #연동환경 설정값 true(개발용), false(상업용)
   isTest: true
   #인증토큰 아이피 제한 기능 사용여부 true(사용-권장), false(미사용)
@@ -27,3 +34,4 @@ popbill:
   useStaticIp: false
   #로컬시스템 시간 사용여부 true(사용-권장), false(미사용)
   useLocalTimeYn: true
+ 
