@@ -23,6 +23,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import org.apache.log4j.Logger;
+import org.springframework.core.io.ClassPathResource;
 import org.xml.sax.SAXException;
 
 import com.google.common.io.Files;
@@ -54,7 +55,7 @@ import com.tableausoftware.documentation.api.rest.bindings.WorkbookType;
  * This class encapsulates the logic used to make requests to the Tableau Server
  * REST API. This class is implemented as a singleton.
  */
-public class RestApiUtils {
+public class RestApiUtils{
 
     private enum Operation {
         ADD_WORKBOOK_PERMISSIONS(getApiUriBuilder().path("sites/{siteId}/workbooks/{workbookId}/permissions")),
@@ -110,7 +111,7 @@ public class RestApiUtils {
      * @return the URI builder
      */
     private static UriBuilder getApiUriBuilder() {
-        return UriBuilder.fromPath(m_properties.getProperty("server.host") + "/api/3.16");
+        return UriBuilder.fromPath(m_properties.getProperty("server.host") + "/api/2.3");
     }
     /**
      * Initializes the RestApiUtils. The initialize code loads values from the configuration
@@ -118,16 +119,18 @@ public class RestApiUtils {
      */
     private static void initialize() {
         try {
-            m_properties.load(new FileInputStream("res/config.properties"));
-            JAXBContext jaxbContext = JAXBContext.newInstance(TsRequest.class, TsResponse.class);
+            //m_properties.load(new FileInputStream("res/config.properties"));
+        	m_properties.load(new ClassPathResource("config.properties").getInputStream());
+        	JAXBContext jaxbContext = JAXBContext.newInstance(TsRequest.class, TsResponse.class);
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = schemaFactory.newSchema(new File(m_properties.getProperty("server.schema.location")));
+            //Schema schema = schemaFactory.newSchema(new File(m_properties.getProperty("server.schema.location")));
+            Schema schema = schemaFactory.newSchema(new ClassPathResource("ts-api_2_3.xsd").getFile());
             s_jaxbMarshaller = jaxbContext.createMarshaller();
             s_jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             s_jaxbUnmarshaller.setSchema(schema);
             s_jaxbMarshaller.setSchema(schema);
         } catch (JAXBException | SAXException | IOException ex) {
-            throw new IllegalStateException("Failed to initialize the REST API");
+            throw new IllegalStateException(ex);
         }
     }
 
@@ -297,7 +300,7 @@ public class RestApiUtils {
      *            the ID of the target site
      */
     public ProjectListType invokeQueryProjects(TableauCredentialsType credential, String siteId) {
-
+try{
         m_logger.info(String.format("Querying projects on site '%s'.", siteId));
 
         String url = Operation.QUERY_PROJECTS.getUrl(siteId);
@@ -311,7 +314,9 @@ public class RestApiUtils {
 
             return response.getProjects();
         }
-
+    }catch(Exception ex){
+		 throw new IllegalStateException(ex);
+	}
         // No projects were found
         return null;
     }
@@ -386,7 +391,7 @@ public class RestApiUtils {
      *         <code>null</code>
      */
     public TableauCredentialsType invokeSignIn(String username, String password, String contentUrl) {
-
+    	try {
         m_logger.info("Signing in to Tableau Server");
 
         String url = Operation.SIGN_IN.getUrl();
@@ -404,6 +409,9 @@ public class RestApiUtils {
             return response.getCredentials();
         }
 
+    	}catch(Exception ex){
+    		 throw new IllegalStateException(ex);
+    	}
         // No credential were received
         return null;
     }
@@ -678,8 +686,8 @@ public class RestApiUtils {
 
         // Builds the URL with the upload session id and workbook type
         UriBuilder builder = Operation.PUBLISH_WORKBOOK.getUriBuilder()
-                .replaceQueryParam("uploadSessionId", fileUpload.getUploadSessionId())
-                .replaceQueryParam("workbookType", Files.getFileExtension(workbookFile.getName()));
+                .queryParam("uploadSessionId", fileUpload.getUploadSessionId())
+                .queryParam("workbookType", Files.getFileExtension(workbookFile.getName()));
         String url = builder.build(siteId, fileUpload.getUploadSessionId()).toString();
 
         // Creates a buffer to read 100KB at a time
