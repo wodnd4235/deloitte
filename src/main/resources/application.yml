@@ -13,6 +13,11 @@ spring:
 spring:
   profiles:
     active: local
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
     
 popbill:
   #링크아이디
@@ -29,3 +34,4 @@ popbill:
   useStaticIp: false
   #로컬시스템 시간 사용여부 true(사용-권장), false(미사용)
   useLocalTimeYn: true
+ 
