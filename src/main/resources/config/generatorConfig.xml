@@ -3,20 +3,22 @@
  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+	
 	<context id="simple" targetRuntime="MyBatis3simple">
 		
-		<!-- property 파일 사용하여 개발 환경 분리 가능함. TODO 강준구 대리 잡  -->
-		 <!-- <properties resource="application.properties"/> 
-		 	  또는
-		 	   <properties resource="application-${spring.profiles.active}.properties"/>
-		 -->
+		<!-- CI/CD 구축 후 Maven 전환 후 application.properties로 변경 뒤 테스트 필요 -->
+		 <!-- <properties resource="application-#{systemProperties['spring.profiles.active']}.properties"/> -->
+	<!--  <properties resource="application.properties"/>	-->
+		 	 
+		
 		 
-		 <!--  개발환경 분리 필요 TODO -->
+		 
+		 <!--    개발환경 분리 필요 TODO -->
 		<!-- <jdbcConnection
 			connectionURL="${spring.datasource.url}"
 			driverClass="${spring.datasource.driver-class-name}" password="${spring.datasource.password}"
-			userId="${spring.datasource.username}" />
-		 -->
+			userId="${spring.datasource.username}" /> -->
+		 
 		 
 		  
 		<jdbcConnection

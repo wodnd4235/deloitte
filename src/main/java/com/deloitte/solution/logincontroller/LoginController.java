@@ -19,7 +19,18 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class LoginController {
 
+	/**
+	  * @MethodName : loginController
+	  * @작성일 : 2022. 9. 21.
+	  * @작성자 : jungukang
+	  * @변경이력 : 
+	  * @description :
+	  * @param userID
+	  * @param passWord
+	  * @return
+	  */
 	@RequestMapping("/login")
+	
 	public ModelAndView loginController(@RequestParam(value="username", required=false)String userID, @RequestParam(value="password", required=false)String passWord) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("login/login");

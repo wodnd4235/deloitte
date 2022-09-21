@@ -15,14 +15,13 @@ spring:
       enabled: true 
       path: /h2-console  
   datasource:
-#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#    url: jdbc:sqlserver://10.204.17.52:48349;instanceName=deloitte
-#    username: ifuser
-#    password: WElcome12!@
-    driver-class-name: org.h2.Driver  
-    url: jdbc:h2:~/test 
-    username: choi 
-    password: 1234
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://10.204.17.52:48349;instanceName=deloitte
+    username: ifuser
+#    driver-class-name: org.h2.Driver  
+#    url: jdbc:h2:~/test 
+#    username: choi 
+#   password: 1234
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: false
